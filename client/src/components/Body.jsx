@@ -1,8 +1,9 @@
 import React from 'react'
+import Header from './Header.jsx';
 
 const Body = () => (
   <div className="body">
-    hello world
+    <Header />
   </div>
 )
 
