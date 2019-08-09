@@ -145,7 +145,7 @@ body {
   .side-nav__icon {
     margin-right: 2rem; }
   .side-nav__dropdown {
-    padding: 1.5rem 3rem; }
+    padding: 1.5rem 2rem; }
     .side-nav__dropdown--basketball {
       display: var(--dropdown-display-basketball); }
     .side-nav__dropdown--baseball {
