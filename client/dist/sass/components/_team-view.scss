@@ -1,0 +1,19 @@
+.stadium {
+  display: flex;
+  height: 30%;
+  position: relative;
+
+  &__image {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    object-position: 0% 75%;
+  }
+
+  &__logo {
+    height: 8rem;
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+  }
+}

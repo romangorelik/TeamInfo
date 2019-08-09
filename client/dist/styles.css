@@ -183,18 +183,26 @@ body {
   padding: 2.5rem;
   color: var(--color-grey-light-4); }
 
-.btn {
-  -webkit-appearance: none;
-  padding: .5rem 1.5rem; }
-  .btn--dropdown {
-    width: 100%; }
+.stadium {
+  display: flex;
+  height: 30%;
+  position: relative; }
+  .stadium__image {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    object-position: 0% 75%; }
+  .stadium__logo {
+    height: 8rem;
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem; }
 
 .body {
   max-width: 120rem;
   margin: 8rem auto;
   background-color: #fff;
-  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.2);
-  min-height: 50rem; }
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.2); }
 
 .content {
   display: flex; }
@@ -207,6 +215,5 @@ body {
   justify-content: space-between; }
 
 .team-view {
-  background-color: blue;
   flex: 1;
   height: 80rem; }

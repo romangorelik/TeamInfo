@@ -1,11 +1,21 @@
 const initialState = {
-  teamInfo: {}
+  teamInfo: {
+    strStadiumThumb: 'https://vignette.wikia.nocookie.net/phobia/images/a/ab/Sports2.jpg/revision/latest?cb=20171106083857',
+    strTeamBadge: ''
+  },
+  teamPlayers: []
 }
 
 function rootReducer(state = initialState, action) {
   if (action.type === 'ADD_TEAM') {
     return Object.assign({}, state, {
       teamInfo: action.payload
+    })
+  }
+
+  if (action.type === 'ADD_PLAYERS') {
+    return Object.assign({}, state, {
+      teamPlayers: action.payload
     })
   }
   return state

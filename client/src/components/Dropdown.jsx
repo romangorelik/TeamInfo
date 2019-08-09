@@ -3,17 +3,42 @@ import { connect } from 'react-redux'
 
 import axios from 'axios'
 
+import { addTeam, addPlayers } from '../redux-state/actions/index'
+
+function mapDispatchToProps (dispatch) {
+  return {
+    addTeam: team => dispatch(addTeam(team)),
+    addPlayers: players => dispatch(addPlayers(players))
+  }
+}
+
 class DropdownJSX extends React.Component {
   state = {
-    selectedTeam: ''
+
   }
 
   chooseTeam = (e) => {
     e.preventDefault();
-    console.log(e.target.value)
-    this.setState({
-      selectedTeam: e.target.value
+
+    axios.get('/teamInfo', {
+      params: {
+        team: e.target.value
+      }
     })
+    .then(response => {
+      this.props.addTeam(response.data)
+    })
+    .catch(err => console.error(err))
+
+    axios.get('/teamPlayers', {
+      params: {
+        team: e.target.value
+      }
+    })
+    .then(response => {
+      this.props.addPlayers(response.data)
+    })
+    .catch(err => console.error(err))
   }
 
   render () {
@@ -34,6 +59,6 @@ class DropdownJSX extends React.Component {
   }
 }
 
-const Dropdown = connect(null)(DropdownJSX)
+const Dropdown = connect(null, mapDispatchToProps)(DropdownJSX)
 
 export default Dropdown
