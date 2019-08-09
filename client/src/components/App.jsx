@@ -2,8 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import store from '../redux-state/store'
 
-import Header from './Header.jsx'
-import AboutMe from './AboutMe.jsx'
+
+import Body from './Body.jsx';
 
 window.store = store
 
@@ -15,8 +15,7 @@ class AppInformation extends React.Component {
   render () {
     return (
       <div>
-        <Header />
-        <AboutMe />
+        <Body />
       </div>
     )
   }
