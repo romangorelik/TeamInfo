@@ -1,10 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux';
 
+import axios from 'axios'
+
 let root = document.documentElement;
 
 class SideNavJSX extends React.Component {
   state = {
+    selectedTeam: '',
+
     basketball: false,
     baseball: false,
     football: false,
@@ -28,6 +32,13 @@ class SideNavJSX extends React.Component {
     })
   }
 
+  chooseTeam = (e) => {
+    e.preventDefault();
+    this.setState({
+      selectedTeam: e.target.value
+    })
+  }
+
   render () {
     return (
       <nav className="sidebar">
@@ -43,14 +54,14 @@ class SideNavJSX extends React.Component {
 
           <li className="side-nav__dropdown side-nav__dropdown--basketball">
             <form className="side-nav__dropdown-form">
-              <select name='basketball-teams'>
+              <select defaultValue='initial' name='basketball-teams' className='side-nav__dropdown-select' onChange={this.chooseTeam}>
+                <option value='initial' disabled>Choose Team</option>
                 {this.state.basketballTeams.map((team, index) => {
                   return (
                     <option value={team} key={index}>{team}</option>
                   )
                 })} 
               </select>
-              <button className="btn btn--dropdown">Search</button>
             </form>
           </li>
 
@@ -65,14 +76,14 @@ class SideNavJSX extends React.Component {
 
           <li className="side-nav__dropdown side-nav__dropdown--baseball">
             <form className="side-nav__dropdown-form">
-              <select name='baseball-teams'>
+              <select defaultValue='initial' name='baseball-teams' className='side-nav__dropdown-select' onChange={this.chooseTeam}>
+                <option value='initial' disabled>Choose Team</option>
                 {this.state.baseballTeams.map((team, index) => {
                   return (
                     <option value={team} key={index}>{team}</option>
                   )
                 })} 
               </select>
-              <button className="btn btn--dropdown">Search</button>
             </form>
           </li>
 
@@ -87,14 +98,14 @@ class SideNavJSX extends React.Component {
 
           <li className="side-nav__dropdown side-nav__dropdown--football">
             <form className="side-nav__dropdown-form">
-              <select name='football-teams'>
+              <select defaultValue='initial' name='football-teams' className='side-nav__dropdown-select' onChange={this.chooseTeam}>
+                <option value='initial' disabled>Choose Team</option>
                 {this.state.footballTeams.map((team, index) => {
                   return (
                     <option value={team} key={index}>{team}</option>
                   )
                 })} 
               </select>
-              <button className="btn btn--dropdown">Search</button>
             </form>
           </li>
 
@@ -109,14 +120,14 @@ class SideNavJSX extends React.Component {
 
           <li className="side-nav__dropdown side-nav__dropdown--hockey">
             <form className="side-nav__dropdown-form">
-              <select name='hockey-teams'>
+              <select defaultValue='initial' name='hockey-teams' className='side-nav__dropdown-select' onChange={this.chooseTeam}>
+                <option value='initial' disabled>Choose Team</option>
                 {this.state.hockeyTeams.map((team, index) => {
                   return (
                     <option value={team} key={index}>{team}</option>
                   )
                 })} 
               </select>
-              <button className="btn btn--dropdown">Search</button>
             </form>
           </li>
         </ul>
