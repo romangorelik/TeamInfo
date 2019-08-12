@@ -1,10 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import Players from './Players.jsx';
 
 const mapStateToProps = state => {
   return {
     teamStadiumImage: state.teamInfo.strStadiumThumb,
-    teamLogo: state.teamInfo.strTeamBadge
+    teamLogo: state.teamInfo.strTeamBadge,
+    teamPlayers: state.teamPlayers
   }
 }
 
@@ -17,6 +19,14 @@ class TeamViewJSX extends React.Component {
           {this.props.teamLogo.length > 0 && 
             <img src={this.props.teamLogo} alt="Logo" className="stadium__logo"/>
           }
+        </div>
+
+        <div className="players-container">
+          {this.props.teamPlayers.map((player, index) => {
+            return (
+              <Players key={index} player={player}/>
+            )
+          })}
         </div>
       </main>
     )
