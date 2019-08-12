@@ -2,9 +2,50 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 class PlayersJSX extends React.Component {
+  state = {
+    age: 0,
+    height: '0',
+    weight: '0'
+  }
+
+  componentDidMount() {
+    this.dateDiffInYears();
+    this.changeHeightandWeight();
+  }
+
+  dateDiffInYears = () => {
+    let newDate = new Date();
+    newDate = newDate.getFullYear();
+
+    let playerYear = this.props.player.dateBorn
+    playerYear = playerYear.split('-')
+
+    let age = newDate - playerYear[0]
+
+    this.setState({
+      age: age
+    })
+  }
+
+  changeHeightandWeight = () => {
+    let height = this.props.player.strHeight
+    let weight = this.props.player.strWeight
+
+    height = height.split(' (')
+    weight = weight.split(' (')
+
+    let newHeight = height[0]
+    let newWeight = weight[0]
+
+    this.setState({
+      height: newHeight,
+      weight: newWeight
+    })
+  }
+
   render () {
     return (
-      <div className='player-card'>
+      <div className='player-card' style={{order: this.props.player.strPosition === 'Manager' ? 1 : 0}}>
         <div className="player-card__side player-card__side--front">
           <div className="player-card__picture">
             {this.props.player.strThumb ? (
@@ -21,10 +62,10 @@ class PlayersJSX extends React.Component {
           <div className="player-card__cta">
             <div className="player-card__details">
               <ul>
-                <li>Age</li>
-                <li>Weight</li>
-                <li>Height</li>
-                <li>Country</li>
+                <li>{this.state.age} years old</li>
+                <li>Weight: {this.state.weight}</li>
+                <li>Height: {this.state.height}</li>
+                <li>Country: {this.props.player.strNationality}</li>
               </ul>
             </div>
           </div>
