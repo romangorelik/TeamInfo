@@ -204,6 +204,22 @@ body {
     top: 1.5rem;
     right: 1.5rem; }
 
+.team-information {
+  padding: 2rem 4rem 0 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  .team-information__name {
+    color: var(--color-primary-dark);
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase; }
+  .team-information__favorite {
+    color: var(--color-primary-light);
+    font-size: 2rem; }
+    .team-information__favorite:hover {
+      color: red; }
+
 .players-container {
   display: flex;
   flex-flow: row wrap;
@@ -230,7 +246,8 @@ body {
     border-radius: 3px;
     box-shadow: 0 0.7rem 1.5rem rgba(0, 0, 0, 0.2); }
     .player-card__side--back {
-      transform: rotateY(180deg); }
+      transform: rotateY(180deg);
+      background-image: linear-gradient(to left top, var(--color-primary-light), var(--color-primary)); }
   .player-card:hover .player-card__side--front {
     transform: rotateY(-180deg); }
   .player-card:hover .player-card__side--back {
@@ -258,9 +275,9 @@ body {
         text-align: center;
         font-size: 1.5rem;
         padding: 1rem;
-        color: var(--color-primary); }
+        color: #fff; }
         .player-card__details ul li:not(:last-child) {
-          border-bottom: 1px solid var(--color-primary-dark); }
+          border-bottom: 1px solid #fff; }
 
 .body {
   max-width: 120rem;

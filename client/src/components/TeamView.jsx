@@ -6,6 +6,7 @@ const mapStateToProps = state => {
   return {
     teamStadiumImage: state.teamInfo.strStadiumThumb,
     teamLogo: state.teamInfo.strTeamBadge,
+    teamInfo: state.teamInfo,
     teamPlayers: state.teamPlayers
   }
 }
@@ -20,6 +21,13 @@ class TeamViewJSX extends React.Component {
             <img src={this.props.teamLogo} alt="Logo" className="stadium__logo"/>
           }
         </div>
+
+        {this.props.teamPlayers.length > 0 && 
+          <div className="team-information">
+            <h2 className="team-information__name">{this.props.teamInfo.strTeam}</h2>
+            <i className="fas fa-heart team-information__favorite"></i>
+          </div>
+        }
 
         <div className="players-container">
           {this.props.teamPlayers.length > 0 && 

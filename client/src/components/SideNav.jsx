@@ -100,7 +100,7 @@ class SideNavJSX extends React.Component {
         </ul>
 
         <div className="legal">
-					&copy; 2017 by Team Stats. All rights reserved.
+					&copy; 2019 by Team Stats. All rights reserved.
 				</div>
       </nav>
     )
