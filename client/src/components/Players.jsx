@@ -4,13 +4,12 @@ import { connect } from 'react-redux'
 class PlayersJSX extends React.Component {
   state = {
     age: 0,
-    height: '0',
-    weight: '0'
+    height: '0'
   }
 
   componentDidMount() {
     this.dateDiffInYears();
-    this.changeHeightandWeight();
+    this.changeHeight();
   }
 
   dateDiffInYears = () => {
@@ -27,19 +26,15 @@ class PlayersJSX extends React.Component {
     })
   }
 
-  changeHeightandWeight = () => {
+  changeHeight = () => {
     let height = this.props.player.strHeight
-    let weight = this.props.player.strWeight
 
     height = height.split(' (')
-    weight = weight.split(' (')
 
     let newHeight = height[0]
-    let newWeight = weight[0]
 
     this.setState({
-      height: newHeight,
-      weight: newWeight
+      height: newHeight
     })
   }
 
@@ -63,7 +58,7 @@ class PlayersJSX extends React.Component {
             <div className="player-card__details">
               <ul>
                 <li>{this.state.age} years old</li>
-                <li>Weight: {this.state.weight}</li>
+                {this.props.player.strWeight.length > 0 ? (<li>Weight: {this.props.player.strWeight}</li>) : (<li>Weight: Unknown</li>)}
                 <li>Height: {this.state.height}</li>
                 <li>Country: {this.props.player.strNationality}</li>
               </ul>

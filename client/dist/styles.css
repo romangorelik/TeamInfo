@@ -177,6 +177,12 @@ body {
       .side-nav__dropdown-select:focus {
         outline: none; }
 
+.other-sports {
+  font-size: 1rem;
+  text-align: center;
+  padding: 2.5rem;
+  color: var(--color-grey-light-4); }
+
 .legal {
   font-size: 1.2rem;
   text-align: center;

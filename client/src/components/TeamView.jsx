@@ -22,11 +22,15 @@ class TeamViewJSX extends React.Component {
         </div>
 
         <div className="players-container">
-          {this.props.teamPlayers.map((player, index) => {
-            return (
-              <Players key={index} player={player}/>
-            )
-          })}
+          {this.props.teamPlayers.length > 0 && 
+            <React.Fragment>
+              {this.props.teamPlayers.map((player, index) => {
+                return (
+                  <Players key={index} player={player}/>
+                )
+              })}
+            </React.Fragment>
+          }
         </div>
       </main>
     )

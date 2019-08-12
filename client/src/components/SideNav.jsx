@@ -95,6 +95,8 @@ class SideNavJSX extends React.Component {
           </li>
 
           <Dropdown teamData={this.hockeyData}/>
+
+          <div className="other-sports">* For other sports, use search bar</div>
         </ul>
 
         <div className="legal">
