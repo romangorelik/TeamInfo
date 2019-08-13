@@ -3,11 +3,14 @@ const path = require('path')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const axios = require('axios')
+const userRouter = require('./database/routers.js')
 
 let app = express()
 app.use(bodyParser.json())
 app.use(morgan('dev'))
 app.use(express.static(__dirname + '/client/dist/'))
+
+app.use('/users', userRouter)
 
 app.get('/teamInfo', (req, res) => {
   let searchedTeam = req.query.team

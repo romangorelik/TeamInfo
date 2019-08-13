@@ -3,13 +3,11 @@ import { connect } from 'react-redux'
 
 class PlayersJSX extends React.Component {
   state = {
-    age: 0,
-    height: '0'
+    age: 0
   }
 
   componentDidMount() {
     this.dateDiffInYears();
-    this.changeHeight();
   }
 
   dateDiffInYears = () => {
@@ -26,17 +24,6 @@ class PlayersJSX extends React.Component {
     })
   }
 
-  changeHeight = () => {
-    let height = this.props.player.strHeight
-
-    height = height.split(' (')
-
-    let newHeight = height[0]
-
-    this.setState({
-      height: newHeight
-    })
-  }
 
   render () {
     return (
@@ -59,7 +46,7 @@ class PlayersJSX extends React.Component {
               <ul>
                 <li>{this.state.age} years old</li>
                 {this.props.player.strWeight.length > 0 ? (<li>Weight: {this.props.player.strWeight}</li>) : (<li>Weight: Unknown</li>)}
-                <li>Height: {this.state.height}</li>
+                <li>Height: {this.props.player.strHeight}</li>
                 <li>Country: {this.props.player.strNationality}</li>
               </ul>
             </div>
