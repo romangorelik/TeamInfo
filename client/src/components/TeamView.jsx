@@ -3,11 +3,19 @@ import { connect } from 'react-redux'
 import Players from './Players.jsx'
 import firebase from './firebase.js'
 import axios from 'axios'
+import { addFavorite } from '../redux-state/actions/index'
+
+function mapDispatchToProps (dispatch) {
+  return {
+    addFavorite: team => dispatch(addFavorite(team))
+  }
+}
 
 const mapStateToProps = state => {
   return {
     teamInfo: state.teamInfo,
-    teamPlayers: state.teamPlayers
+    teamPlayers: state.teamPlayers,
+    favorites: state.favorites
   }
 }
 
@@ -20,7 +28,12 @@ class TeamViewJSX extends React.Component {
         email: currentUser.email,
         favorite: team
       })
+
+      if (!this.props.favorites.includes(team)) {
+        this.props.addFavorite(team)
+      }
     }
+
   }
 
   render () {
@@ -56,6 +69,6 @@ class TeamViewJSX extends React.Component {
   }
 }
 
-const TeamView = connect(mapStateToProps)(TeamViewJSX)
+const TeamView = connect(mapStateToProps, mapDispatchToProps)(TeamViewJSX)
 
 export default TeamView

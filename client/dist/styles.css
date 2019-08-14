@@ -100,7 +100,10 @@ body {
   .user-nav > *:hover {
     background-color: var(--color-grey-light-2); }
   .user-nav__icon {
-    font-size: 2.25rem; }
+    font-size: 2.25rem;
+    position: relative;
+    text-decoration: none;
+    color: inherit; }
     .user-nav__icon:hover {
       color: var(--color-primary); }
   .user-nav__user-photo {
@@ -108,6 +111,19 @@ body {
     border-radius: 50%;
     width: 3.75rem;
     margin-right: 1rem; }
+  .user-nav__notification {
+    font-size: .8rem;
+    height: 1.75rem;
+    width: 1.75rem;
+    border-radius: 50%;
+    background-color: red;
+    color: #fff;
+    position: absolute;
+    top: 1.75rem;
+    right: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
 
 .side-nav {
   font-size: 1.4rem;
@@ -286,6 +302,78 @@ body {
         color: #fff; }
         .player-card__details ul li:not(:last-child) {
           border-bottom: 1px solid #fff; }
+
+.popup {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  top: 0;
+  left: 0;
+  z-index: 300;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .3s;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .popup__content {
+    width: 80%;
+    transition: all .4s .2s;
+    opacity: 0;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 3rem 4rem rgba(0, 0, 0, 0.3);
+    background-image: linear-gradient(to left top, var(--color-primary), var(--color-primary-dark));
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 3rem 5rem;
+    position: relative; }
+  .popup__list {
+    list-style: none;
+    display: flex;
+    flex-flow: column wrap;
+    width: 100%;
+    height: 50vh; }
+    .popup__list-item {
+      display: flex;
+      align-items: center;
+      padding-top: .5rem; }
+  .popup__unfavorite {
+    font-size: 2rem; }
+    .popup__unfavorite:hover {
+      color: red;
+      transform: scale(1.1) translateY(-2px);
+      text-shadow: 1px 2px 3px black; }
+    .popup__unfavorite:active {
+      color: red;
+      transform: scale(1) translateY(0px);
+      text-shadow: .5px 1px 3px black; }
+  .popup__item:link, .popup__item:visited {
+    text-decoration: none;
+    color: var(--color-primary-light);
+    font-family: inherit;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 2rem;
+    -webkit-text-stroke: 1px var(--color-primary-dark); }
+  .popup__close:link, .popup__close:visited {
+    color: var(--color-primary-light);
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 3rem;
+    text-decoration: none;
+    display: inline-block;
+    line-height: 1;
+    transition: all .2s; }
+  .popup__close:hover {
+    color: var(--color-primary-dark); }
+  .popup:target {
+    opacity: 1;
+    visibility: visible; }
+  .popup:target .popup__content {
+    opacity: 1; }
 
 .body {
   max-width: 120rem;

@@ -92,6 +92,9 @@
 
    &__icon {
     font-size: 2.25rem;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
 
     &:hover {
       color: var(--color-primary);
@@ -103,6 +106,23 @@
     border-radius: 50%;
     width: 3.75rem;
     margin-right: 1rem;
+   }
+
+   &__notification {
+    font-size: .8rem;
+    height: 1.75rem;
+    width: 1.75rem;
+    border-radius: 50%;
+    background-color: red;
+    color: #fff;
+
+    position: absolute;
+    top: 1.75rem;
+    right: .5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
    }
 
 

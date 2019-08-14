@@ -22,6 +22,7 @@ app.get('/teamInfo', (req, res) => {
 })
 
 app.get('/teamPlayers', (req, res) => {
+  console.log(req)
   let searchedTeam = req.query.team
   axios.get(`https://www.thesportsdb.com/api/v1/json/1/searchplayers.php?t=${searchedTeam}`)
     .then(response => {

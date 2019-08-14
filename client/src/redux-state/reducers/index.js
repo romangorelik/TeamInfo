@@ -3,7 +3,8 @@ const initialState = {
     strStadiumThumb: 'https://vignette.wikia.nocookie.net/phobia/images/a/ab/Sports2.jpg/revision/latest?cb=20171106083857',
     strTeamBadge: ''
   },
-  teamPlayers: []
+  teamPlayers: [],
+  favorites: []
 }
 
 function rootReducer(state = initialState, action) {
@@ -16,6 +17,14 @@ function rootReducer(state = initialState, action) {
   if (action.type === 'ADD_PLAYERS') {
     return Object.assign({}, state, {
       teamPlayers: action.payload
+    })
+  }
+
+  if (action.type === 'ADD_FAVORITE') {
+
+
+    return Object.assign({}, state, {
+      favorites: state.favorites.concat(action.payload)
     })
   }
   return state

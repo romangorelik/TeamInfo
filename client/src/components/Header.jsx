@@ -3,12 +3,19 @@ import { connect } from 'react-redux'
 import axios from 'axios'
 import firebase from './firebase.js'
 
-import { addTeam, addPlayers } from '../redux-state/actions/index'
+import { addTeam, addPlayers, addFavorite } from '../redux-state/actions/index'
 
 function mapDispatchToProps (dispatch) {
   return {
     addTeam: team => dispatch(addTeam(team)),
-    addPlayers: players => dispatch(addPlayers(players))
+    addPlayers: players => dispatch(addPlayers(players)),
+    addFavorite: team => dispatch(addFavorite(team))
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    favorites: state.favorites
   }
 }
 
@@ -87,6 +94,7 @@ class HeaderJSX extends React.Component {
     })
       .then(response => {
         if (response.data) {
+          this.props.addFavorite(response.data.favorites)
           this.setState({
             favorites: response.data.favorites,
             registered: true
@@ -106,9 +114,13 @@ class HeaderJSX extends React.Component {
       .catch(err => console.error(err))
   }
 
+  checkFavorites = () => {
+    console.log(this.props.favorites)
+  }
+
   render () {
     return (
-      <div className="header">
+      <div className="header" id='header'>
         <div className="header__icon">
           <i className="fas fa-trophy"></i>
         </div>
@@ -122,11 +134,16 @@ class HeaderJSX extends React.Component {
           </button>
         </form>
 
-        <div className="user-nav" onClick={this.loginWithGoogle}>
-          <div className="user-nav__icon">
-            <i className="fas fa-star"></i>
-          </div>
-          <div className="user-nav__user">
+        <div className="user-nav">
+          {firebase.auth().currentUser && 
+            <a href='#favorites' className="user-nav__icon">
+            <i className="fas fa-star" onClick={this.checkFavorites}></i>
+            {this.props.favorites.length > 0 && 
+              <span className="user-nav__notification">{this.props.favorites.length}</span>
+            }
+          </a>
+          }
+          <div className="user-nav__user" onClick={this.loginWithGoogle}>
             <img src={this.state.user.photoURL} alt="User Image" className="user-nav__user-photo"/>
             <span className="user-nav__user-name">{this.state.user.displayName}</span>
           </div>
@@ -136,6 +153,6 @@ class HeaderJSX extends React.Component {
   }
 }
 
-const Header = connect(null, mapDispatchToProps)(HeaderJSX)
+const Header = connect(mapStateToProps, mapDispatchToProps)(HeaderJSX)
 
 export default Header

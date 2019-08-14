@@ -44,7 +44,7 @@ class DropdownJSX extends React.Component {
   render () {
     return (
       <li className={`side-nav__dropdown side-nav__dropdown--${this.props.teamData.sport}`}>
-        <form className="side-nav__dropdown-form">
+        <form method='post' className="side-nav__dropdown-form">
           <select defaultValue='initial' name={`${this.props.teamData.sport}-teams`} className='side-nav__dropdown-select' onChange={this.chooseTeam}>
             <option value='initial' disabled>Choose Team</option>
             {this.props.teamData.teams.map((team, index) => {
