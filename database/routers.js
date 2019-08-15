@@ -5,6 +5,7 @@ router.route('/')
   .get(controllers.getUser)
   .post(controllers.registerUser)
   .patch(controllers.addFavorite)
+  .put(controllers.deleteFavorite)
 
 router.route('/stats')
   .get(controllers.getAmountOfUsers)

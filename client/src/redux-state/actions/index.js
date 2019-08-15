@@ -9,3 +9,7 @@ export function addPlayers(payload) {
 export function addFavorite(payload) {
   return {type: 'ADD_FAVORITE', payload}
 }
+
+export function deleteFavorite(payload) {
+  return {type: 'DELETE_FAVORITE', payload}
+}

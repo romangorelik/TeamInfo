@@ -21,12 +21,17 @@ function rootReducer(state = initialState, action) {
   }
 
   if (action.type === 'ADD_FAVORITE') {
-
-
     return Object.assign({}, state, {
       favorites: state.favorites.concat(action.payload)
     })
   }
+
+  if (action.type === 'DELETE_FAVORITE') {
+    return Object.assign({}, state, {
+      favorites: state.favorites.filter(team => team !== action.payload)
+    })
+  }
+  
   return state
 }
 

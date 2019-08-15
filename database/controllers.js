@@ -26,8 +26,18 @@ exports.registerUser = (req, res) => {
 exports.addFavorite = (req, res) => {
   Users.update(
     {email: req.body.email},
-    {$addToSet: { favorites: req.body.favorite }},
+    {$addToSet: { favorites: req.body.favorite }}
   )
     .then(response => res.send('favorites updated'))
+    .catch(err => console.error(err))
+}
+
+exports.deleteFavorite = (req, res) => {
+  console.log(req.body)
+  Users.update(
+    {email: req.body.email},
+    {$pull: { favorites: { $in: req.body.favorite } } }
+  )
+    .then(response => res.send('favorite deleted'))
     .catch(err => console.error(err))
 }
