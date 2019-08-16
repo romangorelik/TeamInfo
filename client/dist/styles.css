@@ -24,6 +24,15 @@
 html {
   font-size: 62.5%;
   box-sizing: border-box; }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
 
 body {
   font-family: 'Open Sans', sans-serif;
@@ -220,6 +229,29 @@ body {
     top: 1.5rem;
     right: 1.5rem; }
 
+.welcome-info {
+  text-align: center;
+  padding: 3rem; }
+  .welcome-info h1 {
+    font-size: 3rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: inline-block;
+    letter-spacing: 1.5rem;
+    background-image: linear-gradient(to right, var(--color-primary-light), var(--color-primary-dark));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    padding: 2rem; }
+    @media (max-width: 37.5em) {
+      .welcome-info h1 {
+        line-height: 3.5rem; } }
+  .welcome-info p {
+    width: 80%;
+    margin: 0 auto;
+    font-size: 1.5rem;
+    line-height: 2.5rem; }
+
 .team-information {
   padding: 2rem 4rem 0 4rem;
   display: flex;
@@ -257,6 +289,9 @@ body {
   position: relative;
   perspective: 150rem;
   -moz-perspective: 150rem; }
+  @media (max-width: 37.5em) {
+    .player-card {
+      flex: 0 0 60%; } }
   .player-card__side {
     height: 23rem;
     transition: all .8s ease;

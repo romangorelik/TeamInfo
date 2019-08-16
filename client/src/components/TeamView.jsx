@@ -45,6 +45,13 @@ class TeamViewJSX extends React.Component {
             <img src={this.props.teamInfo.strTeamBadge} alt="Logo" className="stadium__logo"/>
           }
         </div>
+        
+        {this.props.teamPlayers.length === 0 &&
+          <div className="welcome-info">
+            <h1>Welcome to Team Search</h1>
+            <p>Feel free to search for any team that we have available. Use our dropdowns for the 4 most popular leagues in the USA, or use our search bar for any teams that you may want some information about. Login in to register and view your favorites.</p>
+          </div>
+        }
 
         {this.props.teamPlayers.length > 0 && 
           <div className="team-information">
