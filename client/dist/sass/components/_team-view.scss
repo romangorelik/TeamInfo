@@ -8,6 +8,10 @@
     height: 20rem;
     object-fit: cover;
     object-position: 0% 75%;
+
+    @include respond(phone) {
+      width: 87%;
+    }
   }
 
   &__logo {

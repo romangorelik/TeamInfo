@@ -223,6 +223,9 @@ body {
     height: 20rem;
     object-fit: cover;
     object-position: 0% 75%; }
+    @media (max-width: 37.5em) {
+      .stadium__image {
+        width: 87%; } }
   .stadium__logo {
     height: 8rem;
     position: absolute;
