@@ -8,10 +8,6 @@
     height: 20rem;
     object-fit: cover;
     object-position: 0% 75%;
-
-    @include respond(phone) {
-      width: 87%;
-    }
   }
 
   &__logo {
@@ -106,13 +102,13 @@
 
   &__side {
     height: 23rem;
-		transition: all .8s ease;
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		backface-visibility: hidden;
-		border-radius: 3px;
+    transition: all .8s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backface-visibility: hidden;
+    border-radius: 3px;
     overflow: hidden;
     border-radius: 3px;
     box-shadow: 0 .7rem 1.5rem rgba(0, 0, 0, .2);
@@ -160,19 +156,55 @@
     ul {
       list-style: none;
       margin: 0 auto;
-      
+
       li {
         text-align: center;
         font-size: 1.5rem;
         padding: 1rem;
         color: #fff;
 
-				&:not(:last-child) {
-					border-bottom: 1px solid #fff;
-				}
+        &:not(:last-child) {
+          border-bottom: 1px solid #fff;
+        }
       }
     }
   }
 
+  @include respond(tab-port) {
+    height: auto;
+    border-radius: 3px;
+    background-color: #fff;
+    box-shadow: 0 1.5rem 4rem rgba(#000, .15);
+
+    &__side {
+      height: auto;
+      box-shadow: none;
+      position: relative;
+
+      &--back {
+        transform: rotateY(0);
+        -webkit-clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+        clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+      }
+    }
+
+
+    &:hover &__side--front {
+      transform: rotateY(0);
+    }
+
+    &__details {
+      padding: 1rem 3rem;
+    }
+
+    &__cta {
+      position: relative;
+      top: 0%;
+      left: 0%;
+      transform: translate(0);
+      width: 100%;
+      padding: 7rem 4rem 4rem 4rem;
+    }
+  }
 
 }
